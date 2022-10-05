@@ -10,6 +10,8 @@ describe('<Home />', () => {
 			</BrowserRouter>
 		);
 		expect(screen.getByTestId('text-home')).toBeInTheDocument();
+		expect(screen.getByTestId('input-home')).toBeInTheDocument();
+		expect(screen.getByTestId('button-home')).toBeInTheDocument();
 	});
 	test('should find text values in Home', async () => {
 		render(
@@ -17,6 +19,9 @@ describe('<Home />', () => {
 				<Home />
 			</BrowserRouter>
 		);
-		expect(screen.getByText(/Home/i)).toBeTruthy();
+
+		expect(screen.getByText(/Create new Player/i)).toBeTruthy();
+		expect(screen.getByRole('button')).toBeTruthy();
+		expect(screen.getByText(/Join/i)).toBeTruthy();
 	});
 });
