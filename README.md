@@ -19,6 +19,7 @@ src
 
 ### Used libraries
 
+- `cypress` for end to end testing (npm install --save-dev cypress)
 - `react-autocomplete-hint` to search autocompletion (npm install react-autocomplete-hint)
 - `react-router-dom` to create app routing (npm install react-router-dom)
 - `@testing-library/react` to assist with testing (npm install --save-dev @testing-library/jest-dom @testing-library/react)
@@ -44,6 +45,16 @@ You may also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run open`
+
+Runs cypress end to end test on a browser.\
+Be sure your your project runs on http://localhost:3000 Chose E2E Testing then click on the Start E2E Testing in Chrome buttom.\
+Click on cookie-clicker.cy.js and you can see al the test running.
+
+### `npm run cypress`
+
+Runs cypress end to end test on your terminal.
 
 ### `npm run build`
 
