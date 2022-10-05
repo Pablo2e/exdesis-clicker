@@ -8,7 +8,6 @@ const Home = () => {
 	const formRef = useRef('');
 	const refValue = useRef('');
 	const [isAName, setIsAName] = useState(false);
-	const users = PersistenceService.get('users');
 
 	const onChange = (e) => {
 		refValue.current = e.target.value;
@@ -24,13 +23,23 @@ const Home = () => {
 		const user = {
 			name: refValue.current,
 			points: 0,
-			autoclicker: false
+			autoClickers: 0
 		};
-		const joiningUser = users.filter((user) => user.name === refValue.current);
-		if (joiningUser[0].name) {
-			PersistenceService.persist('user', user);
+		const users = await PersistenceService.get('users');
+		PersistenceService.persist('loggedUserName', user.name);
+		if (users === null) {
+			const emptyUsersArray = [];
+			PersistenceService.persist('users', [...emptyUsersArray, user]);
 			navigate('/game');
-			setIsAName(false);
+		} else {
+			const joiningUser = users.filter((userToFind) => userToFind.name === refValue.current);
+			if (!joiningUser.length) {
+				PersistenceService.persist('users', [...users, user]);
+				navigate('/game');
+				setIsAName(false);
+			} else {
+				navigate('/game');
+			}
 		}
 	};
 

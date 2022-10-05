@@ -30,3 +30,74 @@ code {
 	justify-content: space-around;
 	width: 200px;
 }
+
+/* Game */
+.game_container-position {
+	display: flex;
+	flex-direction: column;
+	width: 100%vw;
+}
+
+.game_container-header {
+	background-color: dimgray;
+	border: 1px solid hwite;
+	height: 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.game_container-body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+.game_container-header-link {
+	text-decoration: none;
+	color: white;
+}
+
+/* Components */
+/* Button */
+button {
+	background-color: black;
+	border: 1px solid white;
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+	padding: 5px 70px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+button:disabled {
+	background-color: #555;
+	color: #ccc;
+	cursor: not-allowed;
+}
+
+/* input */
+Input {
+	background-color: black;
+	color: white;
+	border-radius: 2px;
+	border: 1px solid white;
+	height: 30px;
+	padding-left: 10px;
+}
+
+Input:disabled {
+	border-radius: 2px;
+	border: 1px solid red;
+}
+
+small {
+	color: red;
+}

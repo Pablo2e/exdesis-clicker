@@ -8,20 +8,20 @@ const Game = React.lazy(() => import('../pages/Game'));
 const Loading = () => <p>Loading ...</p>;
 
 export const NavigationRoutes = () => {
-	const users = [
-		{ name: 'foo', points: 0, autoClickers: 0 },
-		{ name: 'bar', points: 0, autoClickers: 0 },
-		{ name: 'foobar', points: 0, autoClickers: 0 }
-	];
+	// const users = [
+	// 	{ name: 'foo', points: 0, autoClickers: 0 },
+	// 	{ name: 'bar', points: 0, autoClickers: 0 },
+	// 	{ name: 'foobar', points: 0, autoClickers: 0 }
+	// ];
 
-	const setUsers = () => {
-		PersistenceService.persist('users', users);
-		console.log(PersistenceService.get('users'));
-	};
+	// const setUsers = () => {
+	// 	PersistenceService.persist('users', users);
+	// 	console.log(PersistenceService.get('users'));
+	// };
 
-	useEffect(() => {
-		setUsers();
-	});
+	// useEffect(() => {
+	// 	setUsers();
+	// });
 
 	return (
 		<>
