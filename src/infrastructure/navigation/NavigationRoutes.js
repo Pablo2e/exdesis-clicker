@@ -7,7 +7,7 @@ const Game = React.lazy(() => import('../pages/Game'));
 
 const Loading = () => <p>Loading ...</p>;
 
-export const Navigation = () => {
+export const NavigationRoutes = () => {
 	const users = [
 		{ name: 'foo', points: 0, autoClickers: 0 },
 		{ name: 'bar', points: 0, autoClickers: 0 },
