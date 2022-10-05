@@ -17,6 +17,6 @@ describe('full test', () => {
 
 	it('should go to Game ', function () {
 		cy.visit('http://localhost:3000/game');
-		cy.get('[data-testid="text-game"]').contains('Game');
+		expect(localStorage.getItem('users')).to.eq(null);
 	});
 });

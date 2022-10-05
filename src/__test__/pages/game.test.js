@@ -10,6 +10,7 @@ describe('<Game />', () => {
 			</BrowserRouter>
 		);
 		expect(screen.getByTestId('text-game')).toBeInTheDocument();
+		expect(screen.getByTestId('text-your-score')).toBeInTheDocument();
 	});
 	test('should find text values in Game', async () => {
 		render(
@@ -17,6 +18,6 @@ describe('<Game />', () => {
 				<Game />
 			</BrowserRouter>
 		);
-		expect(screen.getByText(/Game/i)).toBeTruthy();
+		expect(screen.getByText(/Your score:/i)).toBeTruthy();
 	});
 });
