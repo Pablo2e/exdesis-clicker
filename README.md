@@ -21,6 +21,8 @@ src
 
 - `react-autocomplete-hint` to search autocompletion (npm install react-autocomplete-hint)
 - `react-router-dom` to create app routing (npm install react-router-dom)
+- `@testing-library/react` to assist with testing (npm install --save-dev @testing-library/jest-dom @testing-library/react)
+- `@testing-library/jest-dom` to assist with testing
 
 # Getting Started with Create React App
 
