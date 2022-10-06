@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PersistenceService } from '../../domain/services/persistenceService';
 
@@ -64,12 +64,23 @@ const Game = () => {
 			});
 			return oldCounter - autoClickerCost;
 		});
+		setNotEnoughtPoints(true);
 	};
 
 	const stopSetInterval = () => {
 		clearInterval(setIntervalFunction);
 		setIntervalFunction = null;
 	};
+
+	const checkValue = useCallback(() => {
+		if (autoClickerCost <= counter) {
+			setNotEnoughtPoints(false);
+		}
+	}, [autoClickerCost, counter]);
+
+	useEffect(() => {
+		checkValue();
+	}, [checkValue]);
 
 	return (
 		<div className="game_container-position" data-testid="text-game-container">
