@@ -35,6 +35,23 @@ const Game = () => {
 		PersistenceService.persist('users', usersUpdated);
 	};
 
+	const updateUsersPoints = async () => {
+		let newUserPoints = (user.points += 1);
+		const usersUpdated = await users.map((userToUpdate) => {
+			if (userToUpdate.name === loggedUserName) {
+				console.log(userToUpdate.points, newUserPoints);
+				return { ...userToUpdate, points: newUserPoints };
+			}
+			return userToUpdate;
+		});
+		PersistenceService.persist('users', usersUpdated);
+		setCounter(user.points);
+	};
+
+	const addPointsAutomaticaly = () => {
+		setInterval(updateUsersPoints, 100);
+	};
+
 	const autoClickerBought = () => {
 		const newScore = (user.points = counter - autoClickerCost);
 		console.log(newScore);
@@ -51,6 +68,7 @@ const Game = () => {
 		if (user.points < autoClickerCost) {
 			setNotEnoughtPoints(true);
 		}
+		addPointsAutomaticaly();
 	};
 
 	return (
