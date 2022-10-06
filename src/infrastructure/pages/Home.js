@@ -6,12 +6,13 @@ const Home = () => {
 	const navigate = useNavigate();
 
 	const formRef = useRef('');
-	const refValue = useRef('');
+	const [inputValue, setInputValue] = useState('');
 	const [isAName, setIsAName] = useState(false);
+	const [firstClick, setFirstClick] = useState(false);
 
 	const onChange = (e) => {
-		refValue.current = e.target.value;
-		if (refValue.current !== '') {
+		setInputValue(e.target.value);
+		if (e.target.value !== '') {
 			setIsAName(false);
 		} else {
 			setIsAName(true);
@@ -20,8 +21,13 @@ const Home = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setFirstClick(true);
+		console.log(inputValue === '');
+		if (inputValue === '') {
+			return;
+		}
 		const user = {
-			name: refValue.current,
+			name: inputValue,
 			points: 0,
 			autoClickers: 0
 		};
@@ -32,7 +38,7 @@ const Home = () => {
 			PersistenceService.persist('users', [...emptyUsersArray, user]);
 			navigate('/game');
 		} else {
-			const joiningUser = users.filter((userToFind) => userToFind.name === refValue.current);
+			const joiningUser = users.filter((userToFind) => userToFind.name === inputValue);
 			if (!joiningUser.length) {
 				PersistenceService.persist('users', [...users, user]);
 				navigate('/game');
@@ -43,13 +49,23 @@ const Home = () => {
 		}
 	};
 
+	const showError = firstClick && !inputValue;
+
 	return (
 		<div className="home_container-position">
 			<form className="home_container" onSubmit={handleSubmit} ref={formRef}>
 				<div data-testid="text-home">Create new Player</div>
 				<div>
-					<input type="text" data-testid="input-home" data-cy="input-home" placeholder="Name" onChange={onChange} />
+					<input
+						className={showError ? 'input-error' : 'input-ok'}
+						type="text"
+						data-testid="input-home"
+						data-cy="input-home"
+						placeholder={showError ? 'Name *' : 'Name'}
+						onChange={onChange}
+					/>
 				</div>
+				{showError ? <small>Required field</small> : null}
 				<div>
 					<button data-testid="button-home" data-cy="button-home" disabled={isAName} type="submit">
 						Join

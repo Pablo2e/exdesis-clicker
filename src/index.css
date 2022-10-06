@@ -90,7 +90,7 @@ button:disabled {
 }
 
 /* input */
-Input {
+.input-ok {
 	background-color: black;
 	color: white;
 	border-radius: 2px;
@@ -98,12 +98,34 @@ Input {
 	height: 30px;
 	padding-left: 10px;
 }
+.input-ok::placeholder {
+	color: white;
+}
 
-Input:disabled {
+.input-error {
+	background-color: black;
+	color: red;
+	border-radius: 2px;
+	border: 1px solid red;
+	height: 30px;
+	padding-left: 10px;
+}
+.input-error::placeholder {
+	color: red;
+}
+
+.input-error:disabled {
 	border-radius: 2px;
 	border: 1px solid red;
 }
 
 small {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
 	color: red;
 }
+
+/* .inputError::placeholder {
+	color: red;
+} */
