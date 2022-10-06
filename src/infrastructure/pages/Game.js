@@ -10,7 +10,8 @@ const Game = () => {
 	const autoClickerBaseCost = 5;
 	const autoClickerCost = autoClickerBaseCost + autoClickerBaseCost * user.autoClickers;
 
-	const topScores = users.sort((a, b) => b.points - a.points).slice(0, 3);
+	const topScores = users.sort((a, b) => b.points - a.points);
+	let setIntervalFunction;
 
 	const [counter, setCounter] = useState(user.points);
 	const [setIntervalTime, setSetIntervalTime] = useState(1000);
@@ -52,9 +53,9 @@ const Game = () => {
 
 	const addPointsAutomaticaly = () => {
 		if (user.autoClickers !== 0) {
-			setSetIntervalTime(setIntervalTime * user.autoClickers);
+			setIntervalFunction = setSetIntervalTime(setIntervalTime * user.autoClickers);
 		}
-		setInterval(updateUsersPoints, setIntervalTime);
+		setIntervalFunction = window.setInterval(updateUsersPoints, setIntervalTime);
 	};
 
 	const autoClickerBought = () => {
@@ -76,28 +77,22 @@ const Game = () => {
 		addPointsAutomaticaly();
 	};
 
+	const stopSetInterval = () => {
+		clearInterval(setIntervalFunction.id);
+		setIntervalFunction = null;
+	};
+
 	return (
 		<div className="game_container-position" data-testid="text-game">
 			<div className="game_container-header">
 				<div className="game_header-text">Hi {user.name}</div>
 				<div>
-					<Link to="/" className="game_container-header-link">
+					<Link to="/" className="game_container-header-link" onClick={stopSetInterval}>
 						LogOut
 					</Link>
 				</div>
 			</div>
 			<div className="game_container-body">
-				<div className="game_container-body-scores" data-testid="text-top-scores">
-					Top 3 scores:&nbsp;{' '}
-					{topScores.map(({ name, points }) => {
-						return (
-							<div>
-								Name: {name} - Score: {points}
-								&nbsp;
-							</div>
-						);
-					})}
-				</div>
 				<div data-testid="text-your-score">Your score: {counter}</div>
 				{showAutoClickersQuantity ? <div>AutoClickers Boutght: {user.autoClickers}</div> : null}
 				<button onClick={handleAdd}>Add 1 point</button>
@@ -106,6 +101,16 @@ const Game = () => {
 						Buy an AutoClicker for {autoClickerCost} points
 					</button>
 				) : null}
+				<div className="game_container-body-scores" data-testid="text-top-scores">
+					Ranking:{' '}
+					{topScores.map(({ name, points }, index) => {
+						return (
+							<div key={index}>
+								Name: {name} - Score: {points}
+							</div>
+						);
+					})}
+				</div>
 			</div>
 		</div>
 	);

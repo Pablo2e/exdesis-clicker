@@ -61,7 +61,7 @@ code {
 }
 .game_container-body-scores {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
