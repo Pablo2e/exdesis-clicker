@@ -16,19 +16,86 @@ code {
 .home_container-position {
 	align-items: center;
 	display: flex;
+	flex-direction: column;
 	height: 100vh;
-	justify-content: center;
+	/* justify-content: center; */
 }
 
-.home_container {
+.home_app-name {
+	font-size: 100px;
+	margin: 50px 0;
+}
+
+.home_body-container {
 	align-items: center;
-	border-radius: 5px;
+	border-radius: 7px;
 	border: 1px solid white;
 	display: flex;
 	flex-direction: column;
-	height: 150px;
+	height: 200px;
 	justify-content: space-around;
 	width: 200px;
+}
+
+.home_mouse-buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-bottom: 10px;
+	gap: 11px;
+}
+.blink_me {
+	animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+	50% {
+		opacity: 0;
+	}
+}
+
+.home_mouse-left-button {
+	text-decoration: none;
+	border: 1px solid white;
+	padding: 12px 40px;
+	font-size: 16px;
+	background-color: black;
+	color: #fff;
+	border-radius: 50px 0 0 0;
+	box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+	cursor: pointer;
+	outline: none;
+	transition: 0.2s all;
+	height: 50px;
+	width: 12px;
+	animation: blinker 0.5s linear infinite;
+}
+
+@keyframes blinker {
+	50% {
+		opacity: 0;
+	}
+}
+
+/* .home_mouse-left-button:active {
+	transform: scale(0.98);
+	box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+} */
+
+.home_mouse-right-button {
+	text-decoration: none;
+	border: 1px solid white;
+	padding: 12px 40px;
+	font-size: 16px;
+	background-color: black;
+	color: #fff;
+	border-radius: 0 50px 0 0;
+	box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+	cursor: pointer;
+	outline: none;
+	transition: 0.2s all;
+	height: 50px;
+	width: 12px;
 }
 
 /* Game */

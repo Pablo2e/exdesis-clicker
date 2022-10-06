@@ -22,7 +22,6 @@ const Home = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setFirstClick(true);
-		console.log(inputValue === '');
 		if (inputValue === '') {
 			return;
 		}
@@ -53,7 +52,14 @@ const Home = () => {
 
 	return (
 		<div className="home_container-position">
-			<form className="home_container" onSubmit={handleSubmit} ref={formRef}>
+			<div className="home_app-name" data-testid="text-home-app-name">
+				Clicker!
+			</div>
+			<div className="home_mouse-buttons">
+				<div className="home_mouse-left-button"></div>
+				<div className="home_mouse-right-button"></div>
+			</div>
+			<form className="home_body-container" onSubmit={handleSubmit} ref={formRef}>
 				<div data-testid="text-home">Create new Player</div>
 				<div>
 					<input

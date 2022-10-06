@@ -71,6 +71,9 @@ const Game = () => {
 		clearInterval(setIntervalFunction);
 		setIntervalFunction = null;
 	};
+	const capitalize = (string) => {
+		return string.charAt(0).toUpperCase() + string.slice(1);
+	};
 
 	const checkValue = useCallback(() => {
 		if (autoClickerCost <= counter) {
@@ -86,7 +89,7 @@ const Game = () => {
 		<div className="game_container-position" data-testid="text-game-container">
 			<div className="game_container-header">
 				<div className="game_header-text" data-testid="text-header-game-name">
-					Hi {user?.name}
+					Hi {capitalize(user?.name)}
 				</div>
 				<div>
 					<Link to="/" className="game_container-header-link" data-cy="game-header-link-logout" onClick={stopSetInterval}>
@@ -110,7 +113,7 @@ const Game = () => {
 					{topScores?.map(({ name, points }, index) => {
 						return (
 							<div key={index}>
-								Name: {name} - Score: {points}
+								Name: {capitalize(name)} - Score: {points}
 							</div>
 						);
 					})}
