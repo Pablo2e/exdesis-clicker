@@ -9,15 +9,9 @@ describe('<Game />', () => {
 				<Game />
 			</BrowserRouter>
 		);
-		expect(screen.getByTestId('text-game')).toBeInTheDocument();
-		expect(screen.getByTestId('text-your-score')).toBeInTheDocument();
-	});
-	test('should find text values in Game', async () => {
-		render(
-			<BrowserRouter>
-				<Game />
-			</BrowserRouter>
-		);
-		expect(screen.getByText(/Your score:/i)).toBeTruthy();
+		expect(screen.getByTestId('text-game-container')).toBeInTheDocument();
+		expect(screen.getByTestId('text-header-game-name')).toBeInTheDocument();
+		expect(screen.getByTestId('text-body-your-score')).toBeInTheDocument();
+		expect(screen.getByTestId('text-body-game-ranking')).toBeInTheDocument();
 	});
 });
