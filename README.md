@@ -29,6 +29,16 @@ src
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### `Node Version`
+
+v16.14.2
+
+### `How to run the project`
+
+Go to https://github.com/Pablo2e/exdesis-clicker.\ Open a new terminal and clone the project in a folder of your choice
+
+> git clone https://github.com/Pablo2e/exdesis-clicker.\ then.\ cd.. exdesis-clicker npm install
+
 ## Available Scripts
 
 In the project directory, you can run:
