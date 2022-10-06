@@ -7,14 +7,16 @@ const Game = () => {
 	const loggedUserName = PersistenceService.get('loggedUserName');
 	const loggedUser = users?.filter((userToFind) => userToFind.name === loggedUserName);
 	const user = loggedUser[0];
+	const autoClickerBaseCost = 5;
+	const autoClickerCost = autoClickerBaseCost + autoClickerBaseCost * user.autoClickers;
+
+	const topScores = users.sort((a, b) => b.points - a.points).slice(0, 3);
 
 	const [counter, setCounter] = useState(user.points);
+	const [setIntervalTime, setSetIntervalTime] = useState(1000);
 	const [showAutoClickerButton, setShowAutoClickerButton] = useState(false);
 	const [showAutoClickersQuantity, setShowAutoClickersQuantity] = useState(false);
 	const [notEnoughtPoints, setNotEnoughtPoints] = useState(false);
-	const autoClickerBaseCost = 5;
-
-	const autoClickerCost = autoClickerBaseCost + autoClickerBaseCost * user.autoClickers;
 
 	const handleAdd = () => {
 		setCounter(counter + 1);
@@ -49,7 +51,10 @@ const Game = () => {
 	};
 
 	const addPointsAutomaticaly = () => {
-		setInterval(updateUsersPoints, 100);
+		if (user.autoClickers !== 0) {
+			setSetIntervalTime(setIntervalTime * user.autoClickers);
+		}
+		setInterval(updateUsersPoints, setIntervalTime);
 	};
 
 	const autoClickerBought = () => {
@@ -82,6 +87,17 @@ const Game = () => {
 				</div>
 			</div>
 			<div className="game_container-body">
+				<div className="game_container-body-scores" data-testid="text-top-scores">
+					Top 3 scores:&nbsp;{' '}
+					{topScores.map(({ name, points }) => {
+						return (
+							<div>
+								Name: {name} - Score: {points}
+								&nbsp;
+							</div>
+						);
+					})}
+				</div>
 				<div data-testid="text-your-score">Your score: {counter}</div>
 				{showAutoClickersQuantity ? <div>AutoClickers Boutght: {user.autoClickers}</div> : null}
 				<button onClick={handleAdd}>Add 1 point</button>

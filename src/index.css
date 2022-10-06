@@ -59,6 +59,12 @@ code {
 	text-decoration: none;
 	color: white;
 }
+.game_container-body-scores {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
 
 /* Components */
 /* Button */
