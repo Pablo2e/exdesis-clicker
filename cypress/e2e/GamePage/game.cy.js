@@ -50,6 +50,15 @@ describe('Game Page', () => {
 		cy.get('[data-testid="text-body-show-autoclickers-bought"]').contains('AutoClickers Boutght: 2');
 	});
 
+	it('should find score number modified with the new format', function () {
+		cy.get('[data-cy="input-home"]').type('Foo');
+		cy.get('[data-cy="button-home"]').click();
+		for (let n = 0; n < 1000; n++) {
+			cy.get('[data-cy="game-button-add-point"]').click();
+		}
+		cy.get('[data-cy="game-container-body-text-your-score-modified"]').contains('1K');
+	});
+
 	it('should logout ', function () {
 		cy.get('[data-cy="input-home"]').type('Foo');
 		cy.get('[data-cy="button-home"]').click();

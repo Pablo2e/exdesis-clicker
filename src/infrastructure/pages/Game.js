@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PersistenceService } from '../../domain/services/persistenceService';
-import { Button } from '../components/Button';
 
 const Game = () => {
 	const userList = PersistenceService.get('users');
@@ -73,6 +72,27 @@ const Game = () => {
 		setIntervalFunction = null;
 	};
 
+	const transformScoreFormat = (value) => {
+		const stringifiedNumber = value?.toString();
+		let numberModified;
+		if (stringifiedNumber?.length > 3) {
+			numberModified = stringifiedNumber.slice(0, 1) + 'K';
+		}
+		if (stringifiedNumber?.length > 4) {
+			numberModified = stringifiedNumber.slice(0, 2) + 'K';
+		}
+		if (stringifiedNumber?.length > 5) {
+			numberModified = stringifiedNumber.slice(0, 3) + 'K';
+		}
+		if (stringifiedNumber?.length > 6) {
+			numberModified = stringifiedNumber.slice(0, 1) + 'M';
+		}
+		if (stringifiedNumber?.length > 7) {
+			numberModified = stringifiedNumber.slice(0, 2) + 'M';
+		}
+		return numberModified;
+	};
+
 	const checkValue = useCallback(() => {
 		if (autoClickerCost <= counter) {
 			setNotEnoughtPoints(false);
@@ -97,16 +117,19 @@ const Game = () => {
 			</div>
 			<div className="game_container-body">
 				<div className="game_container_body-text-your-score" data-testid="text-body-your-score">
-					Your score: {counter}
+					<div> Your score: {counter} </div>
+					<div className="game_container_body-text-your-score-modified" data-cy="game-container-body-text-your-score-modified">
+						{transformScoreFormat(counter)}
+					</div>
 				</div>
 				{showAutoClickersQuantity ? (
 					<div className="game_container_body-text-autoclickers-bought" data-testid="text-body-show-autoclickers-bought">
 						AutoClickers Boutght: {autoClickerBought}
 					</div>
 				) : null}
-				<Button className="game_container_body-button-add-point" data-cy="game-button-add-point" onClick={handleAdd}>
+				<button className="game_container_body-button-add-point" data-cy="game-button-add-point" onClick={handleAdd}>
 					Add 1 point
-				</Button>
+				</button>
 				{showAutoClickerButton ? (
 					<button className="game_container_body-button-buy-autoclicker" data-cy="game-button-buy-autoclicker" onClick={buyAutoClickers} disabled={notEnoughtPoints}>
 						Buy an AutoClicker for {autoClickerCost} points

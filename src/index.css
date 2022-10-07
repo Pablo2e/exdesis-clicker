@@ -107,8 +107,15 @@ code {
 }
 
 .game_container_body-text-your-score {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	font-size: 100px;
 	margin: 50px 0;
+}
+
+.game_container_body-text-your-score-modified {
+	font-size: 20px;
 }
 
 .game_container_body-text-autoclickers-bought {
