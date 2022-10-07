@@ -4,9 +4,12 @@ const storage = {
 
 		if (!storedItem) return null;
 
-		const item = JSON.parse(storedItem);
-
-		return item;
+		try {
+			const item = JSON.parse(storedItem);
+			return item;
+		} catch (err) {
+			console.log('Error: ', err.message);
+		}
 	},
 
 	set: (key, value) => {

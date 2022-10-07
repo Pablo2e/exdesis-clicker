@@ -30,7 +30,7 @@ const Home = () => {
 			points: 0,
 			autoClickers: 0
 		};
-		const users = await PersistenceService.get('users');
+		const users = PersistenceService.get('users');
 		PersistenceService.persist('loggedUserName', user.name);
 		if (users === null) {
 			const emptyUsersArray = [];
@@ -71,7 +71,7 @@ const Home = () => {
 						onChange={onChange}
 					/>
 				</div>
-				{showError ? <small>Required field</small> : null}
+				{showError ? <small data-cy="input-home-required-field-text">Required field</small> : null}
 				<div>
 					<button data-testid="button-home" data-cy="button-home" disabled={isAName} type="submit">
 						Join

@@ -5,14 +5,9 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 	return false;
 });
 
-describe('full test', () => {
+describe('Game Page', () => {
 	beforeEach(() => {
 		cy.visit('http://localhost:3000');
-	});
-	it('should go to Home ', function () {
-		cy.get('[data-testid="text-home"]').contains('Create new Player');
-		cy.get('[data-cy="input-home"]').type('Foo');
-		cy.get('[data-cy="button-home"]').click();
 	});
 
 	it('should go to Game ', function () {
