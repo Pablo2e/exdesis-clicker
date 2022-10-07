@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PersistenceService } from '../../domain/services/persistenceService';
+import { Button } from '../components/Button';
 
 const Game = () => {
 	const userList = PersistenceService.get('users');
@@ -103,9 +104,9 @@ const Game = () => {
 						AutoClickers Boutght: {autoClickerBought}
 					</div>
 				) : null}
-				<button className="game_container_body-button-add-point" data-cy="game-button-add-point" onClick={handleAdd}>
+				<Button className="game_container_body-button-add-point" data-cy="game-button-add-point" onClick={handleAdd}>
 					Add 1 point
-				</button>
+				</Button>
 				{showAutoClickerButton ? (
 					<button className="game_container_body-button-buy-autoclicker" data-cy="game-button-buy-autoclicker" onClick={buyAutoClickers} disabled={notEnoughtPoints}>
 						Buy an AutoClicker for {autoClickerCost} points
