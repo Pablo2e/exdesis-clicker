@@ -117,14 +117,22 @@ const Game = () => {
 			</div>
 			<div className="game_container-body">
 				<div className="game_container_body-text-your-score" data-testid="text-body-your-score">
-					<div> Your score: {counter} </div>
-					<div className="game_container_body-text-your-score-modified" data-cy="game-container-body-text-your-score-modified">
-						{transformScoreFormat(counter)}
+					<div className="game_container_body-text-your-score-items">
+						<div>Your</div>
+						<div>score:</div>
 					</div>
+					<div> {counter}</div>
+				</div>
+				<div className="game_container_body-text-your-score-modified" data-cy="game-container-body-text-your-score-modified">
+					{transformScoreFormat(counter)}
 				</div>
 				{showAutoClickersQuantity ? (
 					<div className="game_container_body-text-autoclickers-bought" data-testid="text-body-show-autoclickers-bought">
-						AutoClickers Boutght: {autoClickerBought}
+						<div className="game_container_body-text-autoclickers-bought-items">
+							<div>AutoClickers</div>
+							<div>Boutght:</div>
+						</div>
+						<div className="game_container_body-text-autoclickers-bought-value"> {autoClickerBought}</div>
 					</div>
 				) : null}
 				<button className="game_container_body-button-add-point" data-cy="game-button-add-point" onClick={handleAdd}>
@@ -135,7 +143,7 @@ const Game = () => {
 						Buy an AutoClicker for {autoClickerCost} points
 					</button>
 				) : null}
-				<div className="game_container_body-text-scores" data-testid="text-body-game-ranking">
+				<div className="game_container_body-text-ranking" data-testid="text-body-game-ranking">
 					Ranking:{' '}
 					{topScores?.map(({ name, points }, index) => {
 						return (

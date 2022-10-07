@@ -14,9 +14,9 @@ code {
 /* Pages */
 /* Home */
 .home_container-position {
-	align-items: center;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	height: 100vh;
 }
 
@@ -26,13 +26,13 @@ code {
 }
 
 .home_body-container {
+	flex-direction: column;
+	display: flex;
+	justify-content: space-around;
 	align-items: center;
 	border-radius: 7px;
 	border: 1px solid white;
-	display: flex;
-	flex-direction: column;
 	height: 200px;
-	justify-content: space-around;
 	width: 200px;
 }
 
@@ -40,25 +40,25 @@ code {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	margin-bottom: 10px;
 	gap: 11px;
+	margin-bottom: 10px;
 }
 
 .home_mouse-left-button {
-	text-decoration: none;
-	border: 1px solid white;
-	padding: 12px 40px;
-	font-size: 16px;
-	background-color: black;
-	color: #fff;
-	border-radius: 50px 0 0 0;
-	box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
-	cursor: pointer;
-	outline: none;
-	transition: 0.2s all;
-	height: 50px;
-	width: 12px;
 	animation: blinker 0.5s linear infinite;
+	background-color: black;
+	border-radius: 50px 0 0 0;
+	border: 1px solid white;
+	box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+	color: #fff;
+	cursor: pointer;
+	font-size: 16px;
+	height: 50px;
+	outline: none;
+	padding: 12px 40px;
+	text-decoration: none;
+	transition: 0.2s all;
+	width: 12px;
 }
 
 @keyframes blinker {
@@ -68,18 +68,18 @@ code {
 }
 
 .home_mouse-right-button {
-	text-decoration: none;
-	border: 1px solid white;
-	padding: 12px 40px;
-	font-size: 16px;
 	background-color: black;
-	color: #fff;
 	border-radius: 0 50px 0 0;
+	border: 1px solid white;
 	box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+	color: #fff;
 	cursor: pointer;
-	outline: none;
-	transition: 0.2s all;
+	font-size: 16px;
 	height: 50px;
+	outline: none;
+	padding: 12px 40px;
+	text-decoration: none;
+	transition: 0.2s all;
 	width: 12px;
 }
 
@@ -91,12 +91,12 @@ code {
 }
 
 .game_container-header {
-	border-bottom: 1px solid white;
-	height: 50px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
+	border-bottom: 1px solid white;
+	height: 50px;
 }
 
 .game_container-body {
@@ -108,61 +108,85 @@ code {
 
 .game_container_body-text-your-score {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
 	font-size: 100px;
+	gap: 10px;
 	margin: 50px 0;
+}
+.game_container_body-text-your-score-items {
+	gap: 15px;
 }
 
 .game_container_body-text-your-score-modified {
 	font-size: 20px;
+	margin-bottom: 30px;
 }
 
 .game_container_body-text-autoclickers-bought {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 	font-size: 50px;
+	gap: 10px;
 	margin: 0 0 50px 0;
 }
 
-.game_container_header-link {
-	text-decoration: none;
-	color: white;
+.game_container_body-text-autoclickers-bought-items {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-size: 50px;
+	gap: 10px;
+	margin: 50px 0;
 }
 
-.game_container_body-text-scores {
+.game_container_header-link {
+	color: white;
+	text-decoration: none;
+}
+
+.game_container_body-text-ranking {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
+	justify-content: center;
 	margin-top: 30px;
 }
 
+.game_container_body-text-your-score-items {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
 .game_container_body-button-add-point {
-	width: 300px;
 	margin: 10px 0;
 	padding: 10px 0px;
+	width: 300px;
 }
 
 .game_container_body-button-buy-autoclicker {
-	width: 300px;
 	margin: 10px 0;
 	padding: 10px 0px;
+	width: 300px;
 }
 
 /* Components */
 /* Button */
 button {
 	background-color: black;
-	border: 1px solid white;
 	border-radius: 5px;
+	border: 1px solid white;
 	color: white;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 14px;
 	font-weight: bold;
+	margin: 4px 2px;
 	padding: 5px 70px;
 	text-align: center;
 	text-decoration: none;
-	display: inline-block;
-	font-size: 14px;
-	margin: 4px 2px;
-	cursor: pointer;
 }
 
 button:disabled {
@@ -174,9 +198,9 @@ button:disabled {
 /* input */
 .input-ok {
 	background-color: black;
-	color: white;
 	border-radius: 2px;
 	border: 1px solid white;
+	color: white;
 	height: 30px;
 	padding-left: 10px;
 }
@@ -186,9 +210,9 @@ button:disabled {
 
 .input-error {
 	background-color: black;
-	color: red;
 	border-radius: 2px;
 	border: 1px solid red;
+	color: red;
 	height: 30px;
 	padding-left: 10px;
 }
@@ -208,6 +232,68 @@ small {
 	color: red;
 }
 
-/* .inputError::placeholder {
-	color: red;
-} */
+@media (max-width: 930px) {
+	.game_container_body-text-your-score {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		font-size: 80pxpx;
+		gap: 10px;
+		margin: 50px 0;
+	}
+
+	.game_container_body-text-autoclickers-bought {
+		font-size: 40px;
+	}
+
+	.game_container_body-text-autoclickers-bought-items {
+		font-size: 40px;
+	}
+}
+
+@media (max-width: 520px) {
+	.game_container_body-text-autoclickers-bought {
+		font-size: 40px;
+		margin: 0 0 50px 0;
+	}
+
+	.game_container_body-text-autoclickers-bought-items {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		font-size: 40px;
+		margin: 50px 0;
+	}
+	.game_container_body-text-your-score {
+		font-size: 60px;
+	}
+	.game_container_body-text-autoclickers-bought {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		font-size: 30px;
+		margin: 0 0 50px 0;
+	}
+	.game_container_body-text-autoclickers-bought-value {
+		margin-top: -40px;
+	}
+}
+@media (max-width: 330px) {
+	.home_app-name {
+		font-size: 60px;
+		margin: 50px 0;
+	}
+	.game_container_body-text-your-score {
+		font-size: 40px;
+	}
+	.game_container_body-button-add-point {
+		margin: 10px 0;
+		padding: 10px 0px;
+		width: 200px;
+	}
+	.game_container_body-button-buy-autoclicker {
+		margin: 10px 0;
+		padding: 10px 0px;
+		width: 200px;
+	}
+}

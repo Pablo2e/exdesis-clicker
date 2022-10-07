@@ -32,7 +32,10 @@ describe('Game Page', () => {
 			cy.get('[data-cy="game-button-add-point"]').click();
 		}
 		cy.get('[data-cy="game-button-buy-autoclicker"]').click();
-		cy.get('[data-testid="text-body-show-autoclickers-bought"]').contains('AutoClickers Boutght: 1');
+		cy.get('[data-testid="text-body-show-autoclickers-bought"]');
+		cy.get('.game_container_body-text-autoclickers-bought-items > :nth-child(1)').contains('AutoClickers');
+		cy.get('.game_container_body-text-autoclickers-bought-items > :nth-child(2)').contains('Boutght:');
+		cy.get('.game_container_body-text-autoclickers-bought-value').contains('1');
 	});
 
 	it('should go to Game and add points to can buy two AutoClicker', function () {
@@ -42,12 +45,18 @@ describe('Game Page', () => {
 			cy.get('[data-cy="game-button-add-point"]').click();
 		}
 		cy.get('[data-cy="game-button-buy-autoclicker"]').click();
-		cy.get('[data-testid="text-body-show-autoclickers-bought"]').contains('AutoClickers Boutght: 1');
+		cy.get('[data-testid="text-body-show-autoclickers-bought"]');
+		cy.get('.game_container_body-text-autoclickers-bought-items > :nth-child(1)').contains('AutoClickers');
+		cy.get('.game_container_body-text-autoclickers-bought-items > :nth-child(2)').contains('Boutght:');
+		cy.get('.game_container_body-text-autoclickers-bought-value').contains('1');
 		for (let n = 0; n < 20; n++) {
 			cy.get('[data-cy="game-button-add-point"]').click();
 		}
 		cy.get('[data-cy="game-button-buy-autoclicker"]').click();
-		cy.get('[data-testid="text-body-show-autoclickers-bought"]').contains('AutoClickers Boutght: 2');
+		cy.get('[data-testid="text-body-show-autoclickers-bought"]');
+		cy.get('.game_container_body-text-autoclickers-bought-items > :nth-child(1)').contains('AutoClickers');
+		cy.get('.game_container_body-text-autoclickers-bought-items > :nth-child(2)').contains('Boutght:');
+		cy.get('.game_container_body-text-autoclickers-bought-value').contains('2');
 	});
 
 	it('should find score number modified with the new format', function () {
