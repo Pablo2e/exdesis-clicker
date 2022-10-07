@@ -35,9 +35,15 @@ v16.14.2
 
 ### `How to run the project`
 
-Go to https://github.com/Pablo2e/exdesis-clicker.\ Open a new terminal and clone the project in a folder of your choice
+Go to https://github.com/Pablo2e/exdesis-clicker.\
 
-> git clone https://github.com/Pablo2e/exdesis-clicker.\ then.\ cd.. exdesis-clicker npm install
+Open a new terminal and clone the project in a folder of your choice.
+
+> git clone https://github.com/Pablo2e/exdesis-clicker.\
+
+then.
+
+cd.. exdesis-clicker npm install
 
 ## Available Scripts
 

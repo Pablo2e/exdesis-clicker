@@ -88,27 +88,33 @@ const Game = () => {
 	return (
 		<div className="game_container-position" data-testid="text-game-container">
 			<div className="game_container-header">
-				<div className="game_header-text" data-testid="text-header-game-name">
+				<div className="game_container_header-text-name" data-testid="text-header-game-name">
 					Hi {capitalize(user?.name)}
 				</div>
 				<div>
-					<Link to="/" className="game_container-header-link" data-cy="game-header-link-logout" onClick={stopSetInterval}>
+					<Link to="/" className="game_container_header-link" data-cy="game-header-link-logout" onClick={stopSetInterval}>
 						LogOut
 					</Link>
 				</div>
 			</div>
 			<div className="game_container-body">
-				<div data-testid="text-body-your-score">Your score: {counter}</div>
-				{showAutoClickersQuantity ? <div data-testid="text-body-show-autoclickers-bought">AutoClickers Boutght: {autoClickerBought}</div> : null}
-				<button data-cy="game-button-add-point" onClick={handleAdd}>
+				<div className="game_container_body-text-your-score" data-testid="text-body-your-score">
+					Your score: {counter}
+				</div>
+				{showAutoClickersQuantity ? (
+					<div className="game_container_body-text-autoclickers-bought" data-testid="text-body-show-autoclickers-bought">
+						AutoClickers Boutght: {autoClickerBought}
+					</div>
+				) : null}
+				<button className="game_container_body-button-add-point" data-cy="game-button-add-point" onClick={handleAdd}>
 					Add 1 point
 				</button>
 				{showAutoClickerButton ? (
-					<button data-cy="game-button-buy-autoclicker" onClick={buyAutoClickers} disabled={notEnoughtPoints}>
+					<button className="game_container_body-button-buy-autoclicker" data-cy="game-button-buy-autoclicker" onClick={buyAutoClickers} disabled={notEnoughtPoints}>
 						Buy an AutoClicker for {autoClickerCost} points
 					</button>
 				) : null}
-				<div className="game_container-body-scores" data-testid="text-body-game-ranking">
+				<div className="game_container_body-text-scores" data-testid="text-body-game-ranking">
 					Ranking:{' '}
 					{topScores?.map(({ name, points }, index) => {
 						return (
